@@ -1,47 +1,51 @@
-const username = "JiRaYaOG"; // 🔥 Remplace si besoin
-
+const username = "JiRaYaOG";
 const repoContainer = document.getElementById("repo-list");
-const searchInput = document.getElementById("search");
+const searchInput = document.getElementById("searchInput");
 
 async function fetchRepos() {
   try {
     const response = await fetch(`https://api.github.com/users/${username}/repos`);
     const data = await response.json();
 
+    if (!Array.isArray(data)) {
+      repoContainer.innerHTML = `<p class="loading">⚠️ Erreur : impossible de charger les repositories.</p>`;
+      return;
+    }
+
     displayRepos(data);
 
-    searchInput.addEventListener("input", () => {
-      const searchTerm = searchInput.value.toLowerCase();
+    // Ajout de la recherche
+    searchInput.addEventListener("input", (e) => {
+      const term = e.target.value.toLowerCase();
       const filtered = data.filter(repo =>
-        repo.name.toLowerCase().includes(searchTerm)
+        repo.name.toLowerCase().includes(term) ||
+        (repo.description && repo.description.toLowerCase().includes(term))
       );
       displayRepos(filtered);
     });
 
   } catch (error) {
-    repoContainer.innerHTML = `<p>⚠️ Impossible de charger les repositories.</p>`;
+    console.error("Erreur API GitHub :", error);
+    repoContainer.innerHTML = `<p class="loading">⚠️ Erreur de chargement des données.</p>`;
   }
 }
 
 function displayRepos(repos) {
-  if (repos.length === 0) {
-    repoContainer.innerHTML = `<p>Aucun repository trouvé.</p>`;
-    return;
-  }
+  repoContainer.innerHTML = "";
 
-  repoContainer.innerHTML = repos
-    .map(repo => `
-      <div class="repo-card">
-        <h3>${repo.name}</h3>
-        <p>${repo.description || "Aucune description"}</p>
-        <div class="repo-stats">
-          <span>⭐ ${repo.stargazers_count}</span>
-          <span>🍴 ${repo.forks_count}</span>
-        </div>
-        <a href="${repo.html_url}" target="_blank" style="color:#00ffff; text-decoration:none;">🔗 Voir sur GitHub</a>
+  repos.forEach(repo => {
+    const card = document.createElement("div");
+    card.className = "repo-card";
+    card.innerHTML = `
+      <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+      <p>${repo.description ? repo.description : "Aucune description"}</p>
+      <div class="repo-stats">
+        <span>⭐ ${repo.stargazers_count}</span>
+        <span>🍴 ${repo.forks_count}</span>
       </div>
-    `)
-    .join("");
+    `;
+    repoContainer.appendChild(card);
+  });
 }
 
 fetchRepos();
