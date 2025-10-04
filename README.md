@@ -68,7 +68,7 @@ cd GitHub-API-futuriste
 start index.html  # ou double-clique sur index.html
 ⚠️ Aucun API key requis, tout fonctionne via l’API publique de GitHub.
 
-## 🧠 Améliorations futures
+🧠 Améliorations futures
 
 ✨ Thème sombre / clair automatique
 ✨ Filtrage par langage (JS, HTML, Python…)
@@ -76,7 +76,7 @@ start index.html  # ou double-clique sur index.html
 ✨ Mode Carte interactive 3D pour les projets
 ✨ Intégration à un dashboard global pour le portfolio
 
-## 👤 Auteur
+👤 Auteur
 
 JiRaYaOG
 💡 Développeur passionné par le design futuriste et les projets immersifs.
