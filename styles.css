@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -13,7 +13,6 @@ body {
   animation: gradientBG 15s ease infinite;
   color: #e0e0e0;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 @keyframes gradientBG {
@@ -24,17 +23,16 @@ body {
 
 header {
   text-align: center;
-  padding: 3rem 1rem 1rem;
+  padding: 2.5rem 1rem 1rem;
   color: #00ffff;
-  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+  text-shadow: 0 0 8px #00ffff, 0 0 20px #00ffff;
 }
 
-header h1 {
+h1 {
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
 }
 
-header p {
+p {
   font-size: 1.2rem;
   color: #a9fef7;
 }
@@ -47,23 +45,21 @@ header p {
   background: rgba(10, 10, 10, 0.8);
   border: 2px solid #00ffff;
   color: #00ffff;
-  padding: 12px 25px;
-  border-radius: 30px;
-  width: 320px;
+  padding: 10px 25px;
+  border-radius: 25px;
+  width: 300px;
   font-size: 1rem;
-  transition: all 0.3s;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
 }
 
 .search-box input:focus {
   outline: none;
   box-shadow: 0 0 25px #00ffff;
-  background: rgba(15, 15, 15, 0.95);
 }
 
 .repo-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   padding: 3rem;
 }
@@ -71,60 +67,54 @@ header p {
 .repo-card {
   background: rgba(20, 20, 25, 0.9);
   border: 2px solid rgba(0, 255, 255, 0.3);
-  border-radius: 20px;
-  padding: 1.8rem;
+  border-radius: 15px;
+  padding: 1.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
   backdrop-filter: blur(5px);
 }
 
 .repo-card:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-5px) scale(1.03);
   border-color: #00ffff;
-  box-shadow: 0 0 35px rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.7);
 }
 
 .repo-card h3 {
   color: #00ffff;
-  font-size: 1.3rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .repo-card p {
-  color: #bbb;
+  color: #ccc;
   font-size: 0.95rem;
   margin-bottom: 1rem;
+  min-height: 60px;
 }
 
 .repo-stats {
   display: flex;
   justify-content: space-between;
-  color: #00ffff;
   font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-a {
   color: #00ffff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-shadow: 0 0 10px #00ffff;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #888;
-  border-top: 1px solid #00ffff33;
-  margin-top: 2rem;
+  opacity: 0.85;
 }
 
 .loading {
   text-align: center;
   color: #00ffff;
-  font-size: 1.2rem;
-  padding: 2rem;
+  animation: glowLoading 1.5s infinite alternate;
+}
+
+@keyframes glowLoading {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #888;
+  border-top: 1px solid #00ffff33;
 }
