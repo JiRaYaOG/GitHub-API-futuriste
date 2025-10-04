@@ -50,34 +50,3 @@ Exploration des projets publics de JiRaYaOG
 ┣ 🎨 style.css → Design néon futuriste
 ┣ ⚙️ script.js → Logique & appels API GitHub
 ┗ 📘 README.md → Documentation du projet
-
----
-
-## 🚀 Installation locale (facultative)
-
-Tu peux exécuter le projet en local :  
-
-```bash
-# Cloner le repo
-git clone https://github.com/JiRaYaOG/GitHub-API-futuriste.git
-
-# Ouvrir le dossier
-cd GitHub-API-futuriste
-
-# Ouvrir dans le navigateur
-start index.html  # ou double-clique sur index.html
-⚠️ Aucun API key requis, tout fonctionne via l’API publique de GitHub.
-
-🧠 Améliorations futures
-
-✨ Thème sombre / clair automatique
-✨ Filtrage par langage (JS, HTML, Python…)
-✨ Affichage des issues et pull requests
-✨ Mode Carte interactive 3D pour les projets
-✨ Intégration à un dashboard global pour le portfolio
-
-👤 Auteur
-
-JiRaYaOG
-💡 Développeur passionné par le design futuriste et les projets immersifs.
-🌐 https://github.com/JiRaYaOG
