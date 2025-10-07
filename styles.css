@@ -1,5 +1,6 @@
-/* --- STYLE FUTURISTE BLEU / ROSE CYBERPUNK --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+/* ===== BASE ===== */
 body {
   font-family: 'Orbitron', sans-serif;
   margin: 0;
@@ -7,8 +8,7 @@ body {
   color: #ffffff;
   text-align: center;
   overflow-x: hidden;
-  position: relative;
-  background: radial-gradient(circle at center, #000010, #000000);
+  background: radial-gradient(circle at top, #060606 0%, #000000 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +16,7 @@ body {
   min-height: 100vh;
 }
 
-/* Fond animé */
+/* ===== Canvas animé ===== */
 #bg-canvas {
   position: fixed;
   top: 0;
@@ -26,129 +26,156 @@ body {
   z-index: -1;
 }
 
-/* Titres néon dégradés */
-.neon-title, .neon-subtitle {
-  background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glowShift 4s linear infinite;
-  text-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.4);
-}
-
-@keyframes glowShift {
-  from { background-position: 0% center; }
-  to { background-position: 200% center; }
-}
-
+/* ===== Titres néon doux ===== */
 .neon-title {
   font-size: 3em;
-  margin-top: 20px;
+  font-weight: 700;
+  text-shadow:
+    0 0 5px #00eaff,
+    0 0 10px rgba(255, 0, 230, 0.7);
+  animation: flicker 4s infinite alternate;
 }
 
 .neon-subtitle {
-  font-size: 1.3em;
-  margin-bottom: 40px;
+  color: #b5eaff;
+  font-size: 1.2em;
+  text-shadow: 0 0 4px #00eaff;
 }
 
-/* Barre de recherche */
-#search {
-  padding: 10px 15px;
-  border: none;
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.92; }
+}
+
+/* ===== Barre de recherche ===== */
+.search {
+  margin: 30px 0;
+}
+
+.search input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid #00fff7;
   border-radius: 10px;
-  width: 260px;
-  font-family: 'Orbitron', sans-serif;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
   color: #fff;
-  box-shadow: 0 0 10px #0ff;
+  font-size: 1em;
+  width: 240px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.search input:focus {
   outline: none;
-  transition: all 0.3s;
+  box-shadow: 0 0 8px rgba(255, 0, 230, 0.5);
 }
 
-#search:focus {
-  box-shadow: 0 0 25px #0ff, 0 0 40px #f0f;
+.search button {
+  background: linear-gradient(45deg, #00fff7, #ff00e6);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 700;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Liste de dépôts */
-#repo-list {
+.search button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 230, 0.5);
+}
+
+/* ===== Section projets ===== */
+.projects {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
-  margin-top: 40px;
+  margin: 30px 0 80px;
+  max-width: 1000px;
 }
 
-/* Carte de dépôt */
-.repo-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(0,255,255,0.2);
+/* Animation d’apparition douce */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Cartes ===== */
+.card {
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
+  margin: 15px;
   padding: 20px;
   width: 250px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  animation: pulse 3s infinite alternate;
-  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+  animation: fadeIn 0.8s ease both;
 }
 
-.repo-card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px #0ff, 0 0 40px #f0f;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(255, 0, 230, 0.4), 0 0 30px rgba(0, 255, 255, 0.3);
 }
 
-.repo-card h3 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  color: #0ff;
-}
-
-.repo-card p {
-  font-size: 0.9em;
-  opacity: 0.8;
+.card h3 {
+  font-size: 1.3em;
+  color: #7ef9ff;
   margin-bottom: 10px;
 }
 
-/* Infos GitHub (Stars / Forks) */
+.card p {
+  font-size: 0.95em;
+  color: #d0d0d0;
+  min-height: 50px;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #ff80ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.card a:hover {
+  text-shadow: 0 0 6px #00fff7, 0 0 12px #ff00e6;
+}
+
+/* ===== Stats repo ===== */
 .repo-stats {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
+  gap: 18px;
+  margin-top: 10px;
 }
 
 .repo-stats span {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.9em;
-  color: #fff;
-  text-shadow: 0 0 8px #0ff;
+  font-size: 1.05em;
+  color: #b3eaff;
+  text-shadow: 0 0 4px rgba(0, 255, 255, 0.4);
+  transition: all 0.3s ease;
 }
 
-/* Lien GitHub */
-.repo-card a {
-  color: #ff80ff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: text-shadow 0.3s;
+.repo-stats span:hover {
+  color: #ffb8ff;
 }
 
-.repo-card a:hover {
-  text-shadow: 0 0 10px #f0f, 0 0 20px #0ff;
-}
-
-/* Animations */
-@keyframes pulse {
-  0% { box-shadow: 0 0 5px #0ff; }
-  50% { box-shadow: 0 0 15px #f0f; }
-  100% { box-shadow: 0 0 5px #0ff; }
-}
-
-/* Pied de page */
+/* ===== Footer ===== */
 footer {
-  margin-top: 60px;
-  padding: 15px;
+  padding: 20px;
   font-size: 0.9em;
-  color: #ff99ff;
-  opacity: 0.8;
+  color: #aaa;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  text-align: center;
 }
