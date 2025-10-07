@@ -1,52 +1,71 @@
 # 🚀 GitHub API Futuriste
 
-Une interface **futuriste et interactive** pour explorer en temps réel les repositories publics d’un utilisateur GitHub.  
-Design **néon / cyberpunk**, recherche instantanée et cartes dynamiques — le tout pour un rendu immersif ⚡.
+Une interface **cyberpunk et élégante** qui permet de **rechercher les dépôts publics d’un utilisateur GitHub**, tout en affichant les informations principales (nom, description, nombre d’étoiles ⭐ et de forks 🍴).
+
+🔗 **Démo en ligne :** [https://jirayaog.github.io/GitHub-API-futuriste/](https://jirayaog.github.io/GitHub-API-futuriste/)
 
 ---
 
-## 🧩 Fonctionnalités
+## 💡 Fonctionnalités
 
-✅ Récupération automatique des dépôts publics via l’API GitHub  
-✅ Affichage des projets sous forme de **cartes stylisées néon**  
-✅ Barre de recherche en **temps réel**  
-✅ Effets **hover glow** sur les cartes  
-✅ **Responsive Design** adapté mobile & desktop  
-✅ **Aucune clé API** nécessaire
-
----
-
-## 🖼️ Aperçu
-
-🔗 **Démo en ligne** :  
-👉 [https://jirayaog.github.io/GitHub-API-futuriste/](https://jirayaog.github.io/GitHub-API-futuriste/)
-
-Exemple d’affichage :  
-
-🚀 Repos GitHub Futuristes
-Exploration des projets publics de JiRaYaOG
-
-🔎 Recherche : [Todo] [Portfolio] [TicTacToe]
-
-*(Astuce : tu peux ajouter un GIF ou screenshot ici pour rendre le README plus visuel)*
+- 🔍 Recherche dynamique par **nom d’utilisateur GitHub**
+- 📂 Affichage automatique de tous les **repos publics**
+- ⭐ **Nombre d’étoiles** et 🍴 **nombre de forks** visibles
+- 🌈 Design **futuriste**, inspiré de ton **mini-portfolio**
+- 🪐 Fond **animé en dégradé bleu/rose**, doux pour les yeux
+- 💻 100% responsive et utilisable sur mobile
 
 ---
 
-## ⚙️ Technologies utilisées
+## 🧠 Objectif pédagogique
 
-| Technologie | Description |
-|------------|-------------|
-| **HTML5 / CSS3** | Structure et design futuriste |
-| **JavaScript (Vanilla)** | Appels API GitHub + interactions dynamiques |
-| **GitHub Pages** | Hébergement rapide et gratuit |
-| **API GitHub** | Source des données des repositories |
+Ce projet t’a permis d’apprendre à :
+- Manipuler l’**API GitHub** avec `fetch()`
+- Gérer les **promesses** et erreurs en JavaScript
+- Créer et insérer dynamiquement des éléments HTML via le DOM
+- Structurer un projet front-end simple et visuellement cohérent
 
 ---
 
-## 📁 Structure du projet
+## ⚙️ Structure du projet
 
-📂 GitHub-API-futuriste
-┣ 📜 index.html → Structure principale
-┣ 🎨 style.css → Design néon futuriste
-┣ ⚙️ script.js → Logique & appels API GitHub
-┗ 📘 README.md → Documentation du projet
+📁 GitHub-API-futuriste
+├── index.html # Page principale avec fond animé et JS intégré
+├── styles.css # Design cyberpunk du site
+└── README.md # Documentation du projet
+
+---
+
+## 🛰️ Comment l’utiliser
+
+1. Ouvre la page web du projet  
+   👉 [https://jirayaog.github.io/GitHub-API-futuriste/](https://jirayaog.github.io/GitHub-API-futuriste/)
+
+2. Entre un **nom d’utilisateur GitHub** (exemple : `JiRaYaOG`)
+
+3. Regarde la magie opérer 🌌 — tous les dépôts s’affichent avec leur description, étoiles et forks.
+
+---
+
+## 🧩 Technologies utilisées
+
+- **HTML5** – structure et contenu
+- **CSS3** – design futuriste et effets glow
+- **JavaScript (ES6)** – requêtes API, DOM et interactions
+- **GitHub REST API** – source des données des dépôts
+
+---
+
+## 🌟 Auteur
+
+👨‍💻 **JiRaYa OG**  
+Projet n°4 de la série *“5 projets futuristes pour progresser en développement web”*  
+> *Toujours plus loin dans le futur du code 💫*
+
+---
+
+## 🧠 À venir (bonus)
+
+- 🔁 Filtrage par langage ou nombre d’étoiles  
+- ✨ Animation d’apparition fluide des cartes (fade-in)  
+- 🧑‍🚀 Mode sombre évolutif avec couleurs personnalisées
