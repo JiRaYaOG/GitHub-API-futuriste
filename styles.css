@@ -1,4 +1,4 @@
-/* --- STYLE FUTURISTE CYBERPUNK --- */
+/* --- STYLE FUTURISTE BLEU / ROSE CYBERPUNK --- */
 
 body {
   font-family: 'Orbitron', sans-serif;
@@ -8,8 +8,7 @@ body {
   text-align: center;
   overflow-x: hidden;
   position: relative;
-  background: #000000;
-
+  background: radial-gradient(circle at center, #000010, #000000);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,15 +26,24 @@ body {
   z-index: -1;
 }
 
-/* Titres */
+/* Titres néon dégradés */
 .neon-title, .neon-subtitle {
-  text-shadow: 0 0 5px #0ff, 0 0 15px #0ff, 0 0 30px #0ff, 0 0 50px #0ff;
+  background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowShift 4s linear infinite;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+@keyframes glowShift {
+  from { background-position: 0% center; }
+  to { background-position: 200% center; }
 }
 
 .neon-title {
   font-size: 3em;
   margin-top: 20px;
-  animation: flicker 2s infinite alternate;
 }
 
 .neon-subtitle {
@@ -52,14 +60,14 @@ body {
   font-family: 'Orbitron', sans-serif;
   text-align: center;
   background: rgba(255, 255, 255, 0.1);
-  color: #0ff;
+  color: #fff;
   box-shadow: 0 0 10px #0ff;
   outline: none;
   transition: all 0.3s;
 }
 
 #search:focus {
-  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+  box-shadow: 0 0 25px #0ff, 0 0 40px #f0f;
 }
 
 /* Liste de dépôts */
@@ -73,39 +81,66 @@ body {
 
 /* Carte de dépôt */
 .repo-card {
-  background: rgba(0,255,255,0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0,255,255,0.2);
   border-radius: 20px;
   padding: 20px;
-  width: 220px;
+  width: 250px;
   transition: transform 0.3s, box-shadow 0.3s;
   animation: pulse 3s infinite alternate;
+  backdrop-filter: blur(10px);
 }
 
 .repo-card:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+  box-shadow: 0 0 25px #0ff, 0 0 40px #f0f;
 }
 
-.repo-card a {
+.repo-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
   color: #0ff;
+}
+
+.repo-card p {
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+/* Infos GitHub (Stars / Forks) */
+.repo-stats {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.repo-stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+  color: #fff;
+  text-shadow: 0 0 8px #0ff;
+}
+
+/* Lien GitHub */
+.repo-card a {
+  color: #ff80ff;
   text-decoration: none;
   font-weight: bold;
+  transition: text-shadow 0.3s;
 }
 
 .repo-card a:hover {
-  text-shadow: 0 0 10px #0ff;
+  text-shadow: 0 0 10px #f0f, 0 0 20px #0ff;
 }
 
-/* Animation */
-@keyframes flicker {
-  from { opacity: 1; }
-  50% { opacity: 0.85; }
-  to { opacity: 1; }
-}
-
+/* Animations */
 @keyframes pulse {
   0% { box-shadow: 0 0 5px #0ff; }
-  50% { box-shadow: 0 0 15px #0ff; }
+  50% { box-shadow: 0 0 15px #f0f; }
   100% { box-shadow: 0 0 5px #0ff; }
 }
 
@@ -114,6 +149,6 @@ footer {
   margin-top: 60px;
   padding: 15px;
   font-size: 0.9em;
-  color: #0ff;
+  color: #ff99ff;
   opacity: 0.8;
 }
