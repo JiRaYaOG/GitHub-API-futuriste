@@ -1,31 +1,105 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GitHub API Futuriste</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Lien vers ton fichier CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Police futuriste -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>🚀 Repos GitHub Futuristes</h1>
-    <p>Exploration des projets publics de <strong>JiRaYaOG</strong></p>
 
-    <div class="search-box">
-      <input id="searchInput" type="text" placeholder="🔎 Recherche un projet...">
-    </div>
+  <!-- Fond animé -->
+  <canvas id="bg-canvas"></canvas>
+
+  <header>
+    <h1 class="neon-title">🚀 GitHub API Futuriste</h1>
+    <h2 class="neon-subtitle">Explore les repos publics GitHub dans un style cyberpunk ⚡</h2>
   </header>
 
   <main>
-    <div id="repo-list" class="repo-container">
-      <p class="loading">Chargement des données GitHub...</p>
-    </div>
+    <input type="text" id="search" placeholder="🔎 Recherche un dépôt...">
+    <div id="repo-list"></div>
   </main>
 
   <footer>
-    <p>✨ Propulsé par l’API GitHub — Design Futuriste © 2025 JiRaYaOG</p>
+    © 2025 JiRaYaOG — Powered by GitHub API ⚡
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Script principal -->
+  <script>
+    // Arrière-plan animé façon particules
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2,
+        speedX: (Math.random() - 0.5) * 0.8,
+        speedY: (Math.random() - 0.5) * 0.8
+      });
+    }
+
+    function animate() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0ff";
+
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // --- SCRIPT PRINCIPAL : APPEL API GITHUB ---
+    const repoList = document.getElementById('repo-list');
+    const searchInput = document.getElementById('search');
+
+    async function getRepos() {
+      const response = await fetch('https://api.github.com/users/JiRaYaOG/repos');
+      const repos = await response.json();
+      displayRepos(repos);
+    }
+
+    function displayRepos(repos) {
+      repoList.innerHTML = '';
+      repos.forEach(repo => {
+        const card = document.createElement('div');
+        card.className = 'repo-card';
+        card.innerHTML = `
+          <h3>${repo.name}</h3>
+          <p>${repo.description ? repo.description : 'Aucune description'}</p>
+          <a href="${repo.html_url}" target="_blank">🔗 Voir sur GitHub</a>
+        `;
+        repoList.appendChild(card);
+      });
+    }
+
+    // Filtrer les dépôts en temps réel
+    searchInput.addEventListener('input', async () => {
+      const response = await fetch('https://api.github.com/users/JiRaYaOG/repos');
+      const repos = await response.json();
+      const filtered = repos.filter(repo => repo.name.toLowerCase().includes(searchInput.value.toLowerCase()));
+      displayRepos(filtered);
+    });
+
+    getRepos();
+  </script>
 </body>
 </html>
