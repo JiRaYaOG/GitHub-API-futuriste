@@ -1,6 +1,5 @@
-/* --- STYLE FUTURISTE UNIFIÉ (inspiré du mini-portfolio) --- */
+/* --- STYLE FUTURISTE CYBERPUNK --- */
 
-/* Corps de la page */
 body {
   font-family: 'Orbitron', sans-serif;
   margin: 0;
@@ -8,15 +7,17 @@ body {
   color: #ffffff;
   text-align: center;
   overflow-x: hidden;
+  position: relative;
   background: #000000;
+
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-height: 100vh;
-  justify-content: center;
 }
 
-/* Canvas ou décor de fond (optionnel) */
+/* Fond animé */
 #bg-canvas {
   position: fixed;
   top: 0;
@@ -26,50 +27,53 @@ body {
   z-index: -1;
 }
 
-/* Titres futuristes */
-h1 {
+/* Titres */
+.neon-title, .neon-subtitle {
+  text-shadow: 0 0 5px #0ff, 0 0 15px #0ff, 0 0 30px #0ff, 0 0 50px #0ff;
+}
+
+.neon-title {
   font-size: 3em;
   margin-top: 20px;
-  text-shadow: 0 0 5px #0ff, 0 0 15px #0ff, 0 0 25px #0ff;
   animation: flicker 2s infinite alternate;
 }
 
-h2 {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-  color: #0ff;
+.neon-subtitle {
+  font-size: 1.3em;
+  margin-bottom: 40px;
 }
 
 /* Barre de recherche */
-input[type="text"] {
+#search {
   padding: 10px 15px;
   border: none;
   border-radius: 10px;
-  width: 250px;
-  outline: none;
+  width: 260px;
   font-family: 'Orbitron', sans-serif;
   text-align: center;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: #0ff;
   box-shadow: 0 0 10px #0ff;
+  outline: none;
   transition: all 0.3s;
 }
 
-input[type="text"]:focus {
+#search:focus {
   box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
 }
 
-/* Liste des projets */
+/* Liste de dépôts */
 #repo-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   margin-top: 40px;
 }
 
+/* Carte de dépôt */
 .repo-card {
-  background: rgba(0,255,255,0.1);
+  background: rgba(0,255,255,0.08);
   border-radius: 20px;
   padding: 20px;
   width: 220px;
@@ -82,7 +86,17 @@ input[type="text"]:focus {
   box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
 }
 
-/* Animation néon */
+.repo-card a {
+  color: #0ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.repo-card a:hover {
+  text-shadow: 0 0 10px #0ff;
+}
+
+/* Animation */
 @keyframes flicker {
   from { opacity: 1; }
   50% { opacity: 0.85; }
